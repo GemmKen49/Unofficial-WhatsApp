@@ -15,7 +15,7 @@ jobs:
 
       - name: Extract newest zip into workspace
         run: |
-          ZIP="$(ls -t ./*.zip | head -n1)"
+          ZIP="$(ls ./*.zip | sort -V | tail -n1)"
           echo "Using $ZIP"
           unzip -oq "$ZIP" -x ".github/*"
           chmod +x scripts/build-rust.sh
